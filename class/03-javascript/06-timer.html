@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>인증번호 만들기</title>
+    <script>
+        let isStarted = false;
+            // 여기에 명령문 작성
+            function getToken() {
+                if(isStarted === false) {
+                    isStarted = true;
+                    const token = String(Math.floor(Math.random() * 1000000)).padStart(6, "0")
+                    document.getElementById("num").innerText = token;
+                    document.getElementById("num").style.color = "#999999";
+
+                    let time = 10
+                    setInterval(function() {
+                        if(time >= 0) {
+                            const min = String(Math.floor(time/60)).padStart(2, "0")
+                            const sec = String(time % 60).padStart(2, "0")
+                            document.getElementById("count").innerText = min + ":" + sec
+                            time = time - 1
+                        } else {
+                            document.getElementById("btn").disabled = true; //
+                            isStarted = false;
+                        }
+                    }, 1000)
+                } else {
+                    alert('너 이미 실행했어')
+                }    
+            }
+    </script>
+</head>
+<body>
+    <div>
+        <div id="num">000000</div>
+        <button onclick="getToken()">인증번호 전송</button>
+        <div id="count">03:00</div>
+        <button id="btn">인증완료</button>
+    </div>
+</body>
+</html>

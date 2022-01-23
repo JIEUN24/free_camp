@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>인증번호 만들기</title>
+    <script>
+        let getToken = () => {
+            // 여기에 명령문 작성
+            let token = String(Math.floor(Math.random() * 1000000)).padStart(6, "0")
+            document.getElementById("num").innerText = token;
+            document.getElementById("num").style.color = "#999999";
+        }
+    </script>
+</head>
+<body>
+    <h1 id="num">000000</h1>
+    <button onclick="getToken()">인증번호 전송</button>
+</body>
+</html>
